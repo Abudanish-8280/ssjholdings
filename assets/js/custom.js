@@ -17,7 +17,7 @@ $(document).ready(function () {
         }, {
             breakpoint: 992,
             settings: {
-                slidesToShow: 2
+                slidesToShow: 1
             }
         },{
             breakpoint: 768,
@@ -33,7 +33,7 @@ $(document).ready(function () {
                 slidesToShow: 4,
                 slidesToScroll: 1,
                 autoplay: false,
-                autoplaySpeed: 1500,
+                autoplaySpeed: 300,
                 arrows: true,
                 dots: false,
                 nav: false,
@@ -139,6 +139,47 @@ $(document).ready(function () {
             });
         });
 
+        $(document).ready(function () {
+            $('.mpartners-slider').slick({
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                autoplay: false,
+                autoplaySpeed: 1500,
+                rows: 1,
+                arrows: false,
+                dots: true,
+                nav: false,
+                pauseOnHover: false,
+                navText: ["<div class='nav-btn prev-slide'>swfds</div><div id='slider-num'>", "</div><div class='nav-btn next-slide'>dgfdg</div>"],
+                responsive: [{
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 2,
+                        rows: 1
+                    }
+                }, {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }]
+            });
+        });
+        
+        $(document).ready(function () {
+            $('.history-slider').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: false,
+                autoplaySpeed: 1500,
+                rows: 1,
+                arrows: false,
+                dots: true,
+                nav: false,
+                pauseOnHover: false,
+                
+            });
+        });
         
         $(document).ready(function() {
             $('.counter').counterUp({
