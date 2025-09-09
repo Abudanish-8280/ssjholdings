@@ -142,7 +142,78 @@ a:hover {
     align-items: center;
     column-gap: 10px;
 }
+.owl-drag {
+    position: relative;
+}
+.owl-nav.disabled {
+    display: none;
+}
+.owl-stage {
+    display: flex;
+}
+.owl-stage-outer {
+    overflow: hidden;
+    padding: 15px 0;
+}
+button.owl-next,
+button.owl-prev {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    overflow: hidden;
+    bottom: 12px;
+    border: none;
+    transition:.5s;
+    border-radius: 50%;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+}
+button.owl-prev:hover,
+button.owl-next:hover{
+opacity:1;	
+}
+button.owl-prev {
+   left: -60px;
+}
+button.owl-next{
+    right: -60px;
+}
+button.owl-prev:after,
+button.owl-next:after {
+    position: absolute;
+    content: "\f053";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 600;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--dark);
+    background: #e1e1e1;
+}
+button.owl-next:after {
+    content: "\f054";
+}
+button.owl-dot {
+    padding: 5px;
+    border: none;
+    margin: 0 4px;
+    border-radius: 50%;
+    background: var(--white);
+}
 
+button.owl-dot.active {
+    background: var(--secondary);
+}
+
+.owl-dots {
+    display: flex;
+    justify-content: center;
+}
 
 /* HEADER SECTION CSS */
 
@@ -835,6 +906,13 @@ div#accordionExample {
     margin-top: 10px;
     font-weight: 500;
 }
+.ourteam .accordion-button {
+    color: var(--white);
+    background-color: #545454;
+}
+.ourteam .accordion-button:not(.collapsed), .partner .accordion-button:not(.collapsed) {
+    background-color: var(--secondary);
+}
 
 /* PARTNERS SECTION CSS */
 
@@ -868,14 +946,18 @@ div#accordionExample {
     background: var(--secondary);
 }
 
-.partnersitem {
-    margin: 20px 0;
-}
 
 .partnersitem img {
     width: 100% !important;
     height: 140px;
     object-fit: contain;
+}
+.partnersitem img:first-child {
+    margin-bottom: 40px;
+}
+.partner .accordion-button {
+    color: var(--white);
+    background-color: #202020;
 }
 
 /* OUR HISTORY SECTION CSS */
@@ -930,39 +1012,19 @@ div#accordionExample {
 .grown-structure h3 {
     font-size: 38px;
     font-weight: 700;
-    position:relative;
 }
-.grown-structure h3:before {
-    position: absolute;
-    content: '';
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 6px;
-    background:var(--secondary);
-    border-radius: 50%;
-}
+
 .history .btn-primary {
     margin-top: 18px;
 }
-.grown-structure .row:nth-child(1) h3:before {
-    right: -30px;
-}
-.grown-structure .row:nth-child(2) h3:before {
-    left: -62px;
-    right: auto;
-}
-.grown-structure .row:nth-child(3) h3:before {
-    right: -77px;
-}
-.grown-structure .row:nth-child(4) h3:before {
-    right: auto;
-    left: -60px;
-}
-.history-slider{
+
+.history-slider {
     margin-top: 40px;
+    display: none;
 }
-
-
+.history .slick-active button {
+    background: var(--primary) !important;
+}
 
 
 /* PRESS COVERAGE SECTION CSS */
@@ -1133,11 +1195,23 @@ footer ul li, footer ul li a, footer p, footer a {
   }
 
   @media only screen and (max-width:992px) {
+    header {
+        padding: 10px 0;
+    }
+    header ul.menucntct {
+        column-gap: 20px;
+    }
+    header ul.menutop {
+        display: none;
+    }
     .mainslider .carousel-content {
         width: 100%;
     }
     .services {
-        margin-top: 35px;
+        margin-top: 40px;
+    }
+    .homeabout {
+        padding: 35px 0;
     }
     .homeabout .col-sm-8, .homeabout .col-sm-4 {
         width: 100%;
@@ -1158,8 +1232,10 @@ footer ul li, footer ul li a, footer p, footer a {
         float: inherit;
     }
     .homeabout {
-        padding: 60px 0;
         background: url(../images/about-bg.jpg)no-repeat right bottom/contain;
+    }
+    .make-business {
+        padding: 0 0 30px;
     }
     .countdown .col-sm-3 {
         width: 50%;
@@ -1175,7 +1251,7 @@ footer ul li, footer ul li a, footer p, footer a {
     }
     .make-business:before {
         width: 100%;
-        height: 61%;
+        height: 63%;
     }
     .make-business .col-sm-6:last-child {
         padding: 0 12px;
@@ -1209,6 +1285,9 @@ footer ul li, footer ul li a, footer p, footer a {
     .homereviews-slider button.slick-next.slick-arrow {
         left: 51%;
     }
+    .partner {
+        padding: 30px 0 50px;
+    }
     .whatwedo .col-sm-5, .whatwedo .col-sm-7 {
         width: 100%;
     }
@@ -1216,9 +1295,22 @@ footer ul li, footer ul li a, footer p, footer a {
         padding: 0 15%;
         text-align: center;
     }
+    .whatwedo .col-sm-7 .leftheading {
+        text-align: left;
+    }
+    .heading span, .leftheading span {
+        padding-bottom: 0;
+    }
+
+    
     .whatwedo {
-        background: url(../images/whatwedo-bg.jpg)no-repeat center center/cover;
         padding-top: 50px;
+    }
+    .whatwedo .row {
+        row-gap: 23px;
+    }
+    .co-founder {
+        padding: 40px 0;
     }
     .co-founder .col-sm-6 {
         width: 100%;
@@ -1231,6 +1323,11 @@ footer ul li, footer ul li a, footer p, footer a {
         width: 70%;
         margin: 0 auto;
     }
+
+
+    .history {
+        padding: 30px 0;
+    }
     .history>.container>.row>.col-sm-6 {
         width: 100%;
     }
@@ -1241,16 +1338,25 @@ footer ul li, footer ul li a, footer p, footer a {
     .history .col-sm-3 {
         width: 100%;
     }
+    .history-slider {
+        display: block;
+    }
+    .press-coverage {
+        padding-bottom: 40px;
+    }
     .press-coverage .col-sm-6 {
         width: 100%;
     }
     .press-coverage .row {
         row-gap: 23px;
     }
+
+    footer {
+        padding: 40px 0 0;
+    }
     footer .row {
         row-gap: 23px;
     }
-    
     footer .col-sm-3, footer .col-sm-2, footer .col-sm-4 {
         width: 100%;
         padding: 0 12px !important;
@@ -1319,15 +1425,7 @@ footer ul li, footer ul li a, footer p, footer a {
   }
   
 @media only screen and (max-width: 768px) {
-    header {
-        padding: 10px 0;
-    }
-    header ul.menucntct {
-        column-gap: 20px;
-    }
-    header ul.menutop {
-        display: none;
-    }
+    
     .homeabout {
         padding: 30px 0;
     }
@@ -1386,14 +1484,24 @@ footer ul li, footer ul li a, footer p, footer a {
     .homereviews-slider button.slick-next.slick-arrow {
         left: 52%;
     }
-    .history img, .partner .row{
-        display: none;
-    }
     .whatwedo ul#pills-tab, .whatwedo div#pills-tabContent{
         display: none;
     }
-    .whatwedo .col-sm-5, .whatwedo .col-sm-7 {
-        padding: 0 11%;
+    .whatwedo .col-sm-7 {
+        padding: 0 16%;
+    }
+
+    .grown-structure .row:nth-child(1) h3:before {
+        right: -25px;
+    }
+    .grown-structure .row:nth-child(2) h3:before {
+        left: -85px;
+    }
+    .grown-structure .row:nth-child(3) h3:before {
+        right: -92px;
+    }
+    .grown-structure .row:nth-child(4) h3:before {
+        left: -75px;
     }
 }
 
@@ -1429,6 +1537,9 @@ footer ul li, footer ul li a, footer p, footer a {
         margin: 18px 0;
         row-gap: 20px;
     }
+    .whatwedo .accordion-body .col-sm-3 {
+        width: 33.3%;
+    }
     .whatwedo .col-sm-5, .whatwedo .col-sm-7 {
         padding: 0 12px;
     }
@@ -1459,7 +1570,7 @@ footer ul li, footer ul li a, footer p, footer a {
         padding-bottom: 30px;
     }
     .partner, .history {
-        padding: 30px 0;
+        padding: 30px 0 45px;
     }
     .press-coverage {
         padding-bottom: 40px;
@@ -1479,7 +1590,52 @@ footer ul li, footer ul li a, footer p, footer a {
     .make-business .col-sm-6:first-child {
         padding: 30px 0 10px;
     }
+    button.owl-prev {
+        left: 0;
+     }
+     button.owl-next{
+         right: 0;
+     }
+     .grown-structure h3:before{
+        display: none;
+     }
+     footer ul.socialicon:before, footer ul.socialicon:after {
+        width: 36%;
+    }
+    .accordion-button {
+        font-size: 18px;
+        font-weight: 600;
+    }
 }
+
+@media only screen and (max-width: 480px) {
+    .carousel-caption {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .mainslider .carousel-caption h1 {
+        font-size: 32px;
+        line-height: 42px;
+    }
+    .mainslider figure img {
+        height: 450px;
+    }
+    .carousel-indicators {
+        right: 10px;
+        bottom: 34px;
+    }
+    .mainslider ul.banner-icon {
+        right: 15px;
+        bottom: 156px;
+    }
+    .countdownlist p strong span {
+        font-size: 30px;
+    }
+    .countdownlist p strong {
+        font-size: 16px;
+    }
+}
+ 
 
 @media only screen and (max-width: 415px) {
     .grown-structure h3 {
@@ -1505,5 +1661,58 @@ footer ul li, footer ul li a, footer p, footer a {
     .mainslider .carousel-caption h1 {
         font-size: 30px;
         line-height: 40px;
+    }
+    footer ul li.menu-item {
+        width: 100% !important;
+    }
+    footer figure img {
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 396px) {
+    .mainslider .carousel-caption h1 {
+        font-size: 28px;
+        line-height: 38px;
+    }
+    .mainslider .carousel-content p {
+        font-size: 16px;
+    }
+    .heading, .leftheading {
+        font-size: 26px;
+        line-height: 34px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+    .about-content ul {
+        width: 80%;
+    }
+    .make-business .row .col-sm-6 .row {
+        padding: 7px 12px 15px;
+        margin: 0;
+    }
+    .make-business .col-sm-6:first-child .row ul {
+        column-gap: 15px;
+    }
+    .whatwedo .accordion-body .col-sm-3 {
+        width: 50%;
+    }
+    .partner h3 {
+        font-size: 22px;
+        margin-bottom: 17px;
+    }
+    footer ul.socialicon:before, footer ul.socialicon:after {
+        width: 33%;
+    }
+    button.slick-prev.slick-arrow, button.slick-next.slick-arrow {
+        height: 40px;
+        width: 40px;
+    }
+    button.slick-prev.slick-arrow:after, button.slick-next.slick-arrow:after {
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width: 360px) {
+    .about-content ul {
+        width: 90%;
     }
 }
