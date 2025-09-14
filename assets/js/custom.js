@@ -48,7 +48,7 @@ $(document).ready(function () {
         arrows: true,
         dots: false,
         nav: false,
-        rows: 3,
+        rows: 1,
         pauseOnHover: false,
         navText: ["<div class='nav-btn prev-slide'>swfds</div><div id='slider-num'>", "</div><div class='nav-btn next-slide'>dgfdg</div>"],
         responsive: [{
